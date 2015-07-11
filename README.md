@@ -4,7 +4,7 @@ A Virtual Pet Game for Python
 
 This game is a work-in-progress, designed in a bottom-up fashion.  Originally inspired by the Thinkful.com Pypet Tutorial
 
-# Version 2.0:
+# Version 1.2:
 
 What's New:
     Choose up to 5 Different Animals
