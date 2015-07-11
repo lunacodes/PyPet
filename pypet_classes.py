@@ -200,7 +200,6 @@ def intro(pet_name):
     game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat)
 
 
-"""MAKE A VARIABLE CALLED user_pet THAT THEN GETS FED INTO THE CLASS NAMES - Cat, Turtle, Etc, BELOW"""
 def menu(player_pet_choice): 
     print(Fore.RED + "Menu: \n\n",  
       Fore.GREEN + "1.  Feed \n",
@@ -238,7 +237,6 @@ def game_over_check(pet, pet_violent, pet_starved, game_running): #Add in checks
     return game_running, True
 
 
-"""Create some sort of assigned_pet variable here, so that I can choose the right animal check ... """
 def game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat):
     turn = 0
     game_running = True
@@ -258,7 +256,6 @@ def game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat):
         player_pet_choice.stats()
 
         menu(player_pet_choice)
-        """I *should* be able to make this logic into a function... """
         hour += 1
 
 
