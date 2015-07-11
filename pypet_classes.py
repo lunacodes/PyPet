@@ -3,26 +3,6 @@ import pygame
 from pygame.locals import *
 from colorama import init, Fore, Back, Style
 
-"""Provide a Menu Option at beginning for Evil, Fucked up, Triggering Pet vs Nice Pet ... or Nice Cat"""
-"""Implement Weight & Sleepiness ... Relate Weight to Boredom/Mood/Food ... Have Sleep fix some stats & make cat hungrier"""
-"""Implement Sleep so that it accounts for Midnight & Noon Changes"""
-"""Sleepy Mechanic: Pet is Sleepy for 2 rounds & then falls asleep"""
-"""It's probably going to be more realistic to work from a 1-10 scale for the counters, rather than a 1-5"""
-"""Note: Instead of having to switch Colors every two seconds, I could create a 'messages' function & a 'player choice' function that would both just internall call print with their specific color assignment"""
-"""There needs to be a time function so that we're not using military time ... Really simple Algorithm: if time > 12: Time-12 """
-"""Find a way to Instantiate Animal for the next version"""
-"""Include a Violence Warning from the System when Violence Is High"""
-"""bored_check: Change Printed Comments"""
-"""Fix Violence Not Initiating Soon Enough Bug"""
-"""Differentiate Checks & functions based on Which Animal was Chosen 
-- I could do this by defining each check for each animal separately in the Class and then calling the appropriate function in the game_loop"""
-"""But probably the easier way to do this is to pass a variable with the choice to the class & then not have crass code in the game loop... also, subclass that inherist from the animal class could be an option"""
-"""Check if I still need Pygame's clock.tick() function"""
-"""Move time adjust into function if possible"""
-
-
-"""Split Readme Notes into Bugs & Features & What's New"""
-
 init() #Colorama init
 pygame.init()
 clock = pygame.time.Clock()
