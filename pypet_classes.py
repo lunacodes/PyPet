@@ -1,196 +1,304 @@
 from __future__ import print_function
 import pygame
 from pygame.locals import *
-# from colorama import init, Fore, Back, Style
+from colorama import init, Fore, Back, Style
+
+"""Provide a Menu Option at beginning for Evil, Fucked up, Triggering Pet vs Nice Pet ... or Nice Cat"""
+"""Implement Weight & Sleepiness ... Relate Weight to Boredom/Mood/Food ... Have Sleep fix some stats & make cat hungrier"""
+"""Implement Sleep so that it accounts for Midnight & Noon Changes"""
+"""Sleepy Mechanic: Pet is Sleepy for 2 rounds & then falls asleep"""
+"""It's probably going to be more realistic to work from a 1-10 scale for the counters, rather than a 1-5"""
+"""Note: Instead of having to switch Colors every two seconds, I could create a 'messages' function & a 'player choice' function that would both just internall call print with their specific color assignment"""
+"""There needs to be a time function so that we're not using military time ... Really simple Algorithm: if time > 12: Time-12 """
+"""Find a way to Instantiate Animal for the next version"""
+"""Include a Violence Warning from the System when Violence Is High"""
+"""bored_check: Change Printed Comments"""
+"""Fix Violence Not Initiating Soon Enough Bug"""
+"""Differentiate Checks & functions based on Which Animal was Chosen 
+- I could do this by defining each check for each animal separately in the Class and then calling the appropriate function in the game_loop"""
+"""But probably the easier way to do this is to pass a variable with the choice to the class & then not have crass code in the game loop... also, subclass that inherist from the animal class could be an option"""
+"""Check if I still need Pygame's clock.tick() function"""
+"""Move time adjust into function if possible"""
 
 
-# init() #Colorama Init
+"""Split Readme Notes into Bugs & Features & What's New"""
 
+init() #Colorama init
 pygame.init()
 clock = pygame.time.Clock()
 
-class Pet(object):
+pet_type = 0
+pet_name = ""
+
+class Pet(object): 
     def __init__(self):
-        self.name = name
+        self.name = pet_name    
         self.hungry = True
-        self.weight = 9.5
+        self.hungry_counter = 2
+        self.starved = False
+        self.bored = True
+        self.bored_counter = 2
+        self.upset = False
+        self.upset_counter = 0
+        self.violent = False
+        self.violent_counter = 0
+        self.sleepy = False 
+        self.awake = True
+        self.weight = 5.0
         self.age = 5
         self.photo = '(=^o.o^=)__'
+
+    def stats(self): 
+        print(Fore.CYAN + self.name + "\n", self.photo + "\n", "Weght: ", self.weight, "\n")
+        if self.hungry == True:
+            print("Hungry\n")
+        if self.bored == True:
+            print("Bored Now \n")
+        if self.upset == True:
+            print("Upset\n")
+        if self.awake == True:
+            print("Awake\n")
+        elif self.awake == False:
+            print("Asleep\n")
+        if self.sleepy == True:
+            print("Sleepy\n")
+        print("\n")
+
+
+
+    def upset_check(self): 
+        if self.upset_counter < 0:
+            self.upset_counter = 0 
+        
+        elif self.upset_counter > 0:
+            if self.upset_counter == 1:
+                print(Fore.CYAN + "Meh")
+            elif self.upset_counter < 3:
+                print(Fore.CYAN + "I'm kinda upset right now ... please make this better?")
+            elif self.upset_counter == 4:
+                print(Fore.CYAN + "I'M REALLY UPSET - FIX THIS NOW!!")
+            elif self.upset_counter == 5:
+                print(Fore.CYAN + "FIX THIS NOW GODS DAMNIT - YOU FUCKING TERRIBLE OWNER!!")
+            elif self.upset_counter >= 6:
+                print(Fore.CYAN + "Now you're gonna die")
+                self.violent = True 
+
+    def bored_check(self): 
+        if self.bored_counter <= 0:
+            self.bored_counter = 0
+        elif self.bored_counter >= 0:
+            if self.bored_counter <= 2:
+                print(Fore.CYAN + "\nBored Now")
+            elif self.bored_counter == 3:
+                print(Fore.CYAN + "\nLook, I like you and all, but you're really not That Interesting")
+            elif self.bored_counter >= 4:
+                self.upset_counter += 1
+                print(Fore.CYAN + "Bored Count >= 4")
+    
+    def violent_check(self): 
+        if self.violent_counter <= 0:
+            self.violent_counter = 0
+        elif self.violent_counter > 0:
+            if self.violent_counter <= 2:
+                print(Fore.CYAN + "\nViolent Now")
+            elif self.violent_counter == 3:
+                print(Fore.CYAN + "\nLook, I like you and all, but you're really not That Interesting")
+            elif self.violent_counter < 5:
+                self.upset_counter += 1
+                print(Fore.CYAN + "\nYou're boring - Fuck Off")
+            elif self.violent_counter >= 6:
+                self.violent == True
+
+    def hungry_check(self):
+        if self.hungry_counter <= 0:
+            self.hungry_counter = 0
+        elif self.hungry_counter >= 0:
+            if self.hungry_counter <= 2:
+                print(Fore.CYAN + "Could you feed me?")
+            elif self.hungry_counter == 3:
+                print(Fore.CYAN + "Yo!  You're Ok & All, but Feed Me!!")
+            elif self.hungry_counter < 6:
+                self.upset_counter += 1
+                print(Fore.CYAN + "FEED ME NOW")
+            elif self.hungry_check >= 6:
+                self.starved = True
 
     def feed(self):
         if self.hungry == True:
             self.weight += 1
             self.hungry = False
-            print("Yummy Yummy Foodz")
+            print(Fore.CYAN + "\nYummy, Yummy Foodz")
         else:
-            print("I is no Hungry right now.  I can has fooz later plz?")
-
+            print(Fore.CYAN + "\nI am no Hungry right now.  I can has foodz later plz?")
 
     def pet(self):
-        print("^_^ Thank you for petting me ^_^")
+        print(Fore.CYAN + "\n^_^ Thank you for petting me ^_^")
+        self.upset_counter -= 1
+        
+        self.upset_check()
+        
+    def play(self):
 
-#Red Text!!
-# print(Fore.RED + 'some red text')
-# print(Fore.RESET + Back.RESET + Style.RESET_ALL)
+        print(Fore.CYAN + "\n^_^ Yay!!  Let's Play ^_^ ")
+        self.upset_counter -= 2
+        self.bored_counter -= 2
+        self.weight -= 1
 
-hour = 1
-hungry = True
-bored = True
-upset_small = True
-upset_big =False
-violent = False
-AMPM = ""
-sleepy = False
-awake = True
-upset_counter = 0
+        self.upset_check()
+        self.bored_check()
 
-def gameOver():
-    print("You Lose \n Game Over!!")
-    awake = False
-    return awake
-def win():
-    print("You Made Me Happy!!  You are wonderful owner ^_^")
-    awake = False
-    return awake
+    def ignore(self):
+        print(Fore.CYAN + "\nWow - Fuck You. Pay attention to me")
+        
+        if self.upset_counter == 2:
+            self.upset_counter += 1
+        elif self.upset_counter >= 3: 
+            self.upset_counter += 1.5
+        self.bored_counter += 1
+        self.hungry_counter += 1
 
-print("Welcome to PyPety ^_^ \n")
+    def throw(self):
+        print(Fore.CYAN + "\nWHY THE FUCK WOULD YOU THROW ME???!")
+        self.upset_counter += 2
+        self.violent_counter += 2
 
-while str(AMPM) != "AM" :
-    AMPM = raw_input("\nIs it AM or PM? ").upper()
-    if AMPM == "AM \n":
-        print(AMPM)
-    elif AMPM == "PM \n":
-        print(AMPM)
-        # break
-    else:
-        print("Please enter AM or PM \n")
-    break
+    def talk(self):
+
+        self.bored_counter -= 1
+        self.hungry_counter += 1
+
+
+Cat = Pet()
+Rat = Pet()
+Mouse = Pet()
+Bunny = Pet()
+Turtle = Pet()
+
+def intro(pet_name):
+    print(Fore.RED + "Heya - Welcome to Pypet!!\n") 
+    print(Fore.GREEN + ' (=^o.o^=)' + "\n",
+          '(=^o.o^=)' + "\n",
+          '(=^o.o^=)' + "\n",
+          '(=^o.o^=)' + "\n",
+          '(=^o.o^=)' + "\n",
+          '(=^o.o^=)' + "\n",
+          '(=^o.o^=)' + "\n",
+          )
+
+    print(Fore.RED) 
+    print("What type of pet would you like to play?" + Fore.GREEN + " \n\n1.  Cat\n2.  Rat\n3.  Mouse\n4.  Bunny\n5.  Turtle\n")
+    pet_type = input("") 
+    print(str(pet_type)) 
+    print(Fore.RED)
+        pet_name = raw_input("\nWhat would you like to call your Cat? \n\n" + Fore.GREEN)
+        player_pet_choice = Cat
+        Cat.name = pet_name
+    if pet_type == 2:
+        pet_name = raw_input("\nWhat would you like to call your Rat? \n" + Fore.GREEN)
+        player_pet_choice = Rat
+        Rat.name = pet_name
+    if pet_type == 3:
+        pet_name = raw_input("\nWhat would you like to call your Mouse? \n" + Fore.GREEN)
+        player_pet_choice = Mouse
+        Mouse.name = pet_name
+    if pet_type == 4:
+        pet_name = raw_input("\nWhat would you like to call your Bunny? \n" + Fore.GREEN)
+        player_pet_choice = Bunny
+        Bunny.name = pet_name
+    if pet_type == 5:
+        pet_name = raw_input("\nWhat would you like to call your Turtle? \n" + Fore.GREEN)
+        player_pet_choice = Turtle
+        Turtle.name = pet_name
+
+
+    print(Fore.CYAN + '\n\n' + pet_name + ' says "Hello"\n\n\n')
+    print(Fore.RED + "Let's set the Time! \n")
+    hour = input("What's the Hour? (1-12) \n" + Fore.GREEN) 
+    AMPM = raw_input(Fore.RED + "\nIs it AM or PM? \n" + Fore.GREEN).upper() #This should cause a bug later on, if the user inputs more than two characters... easy enough to fix, just get the slice of it
+    print("\n")
     
-if hour in xrange(1,12):
-    if AMPM:
-        hour = input("What hour is it? (1-12) \n\n")
+    game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat)
 
 
-while awake: 
-    print("The Time Is", hour, AMPM, "\n")
+"""MAKE A VARIABLE CALLED user_pet THAT THEN GETS FED INTO THE CLASS NAMES - Cat, Turtle, Etc, BELOW"""
+def menu(player_pet_choice): 
+    print(Fore.RED + "Menu: \n\n",  
+      Fore.GREEN + "1.  Feed \n",
+      "2.  Pet \n",
+      "3.  Play \n",
+      "4.  Ignore \n",
+      "5.  Throw \n",
+      "6.  Talk \n \n")
+
+    choice = input(Fore.RED + "What would you like to do? (Enter 1-5) \n" + Fore.GREEN)
     
-    if violent == True:
-        print("PET ATTACKS YOU AND YOU DIE!!! \n\n")
-        gameOver()
-        awake = False
-        break
-
-    elif hungry == True:
-        # print("I'm Hungry.  Feed me plz?? *cute face* \n\n")
-        if upset_small == True:
-            print("I'm hungry and a bit upset - feed me now?? \n\n")
-        if upset_big == True:
-            print("I'M HUNGRY AND UPSET - FEED ME NOW!! \n\n")
-        elif upset_small == False:
-            upset_small = True
-        if bored == True:
-            print("Bored Now *Willow Voice* \n\n")
-        elif bored == False:
-            bored = True
-        else:
-            print("I'm Hungry.  Feed me plz?? *cute face* \n\n")
-
-    elif bored == True:
-        if hungry == True:
-            print("I'm Hungry & Bored.  Feed me plz?? *cute face* \n\n")
-        if upset_small == True:
-            print("I'm bored & a bit upset.  Fix this plz? *mild upset face* \n\n")            
-        elif upset_small == False:
-            upset_small = True
-        if upset_big:
-            print("I'M UPSET & THIS IS FUCKING BORING.  FUCKING FIX THIS!! \n\n")
-        else:
-            print("Bored Now *Willow Voice* \n\n")
-
-    elif upset_small == True:
-        if hungry == True:
-            print("I'm hungry and a bit upset - feed me now?? \n\n")
-        if bored == True:
-            print("I'm bored & a bit upset.  Fix this plz? *mild upset face* \n\n")            
-        else:
-            print("I'm a bit upset - please fix this?")
-            upset_small = False #Maybe take these two lines out??
-            upset_big = True
-
-    elif upset_big:
-        if hungry == True:
-            print("I'M HUNGRY AND UPSET - FEED ME NOW!! \n\n")
-        if bored == True:
-            print("I'M UPSET & THIS IS FUCKING BORING.  FUCKING FIX THIS!! \n\n")
-        else:
-            print("I'M REALLY UPSET - FIX THIS!!")
-            upset_counter += 1
-            if upset_counter >= 2:
-                violent = True
-
-    else:
-        win()
-        awake = False
-        break
-
-    print("Menu: \n\n",
-          "1.  Feed \n",
-          "2.  Pet \n",
-          "3.  Play \n",
-          "4.  Ignore \n",
-          "5.  Throw \n",
-          "6.  Talk \n \n")
-
-    choice = input("What would you like to do? (Enter 1-5) \n")
     if choice == 1:
-        print("FOODZ - YAY!! \n\n")
-        hungry = False
+        player_pet_choice.feed()
     if choice == 2:
-        print("Awww, you pet me *happy face* \n\n")
-        upset_small = False
+        player_pet_choice.pet()
     if choice == 3:
-        print("PLAY TIMEZ!!!  HAPPY ^_^ :) ^_^")
-        bored = False
-        upset_small = False
+        player_pet_choice.play()
     if choice == 4:
-        if hungry == True:
-            print("HUNGRY \n")
-        if upset_small == True:
-            print("You're Making Me MAD!!\n")
-            upset_small = False
-            upset_big = True
-        if bored == True:
-            print("BORED NOW: \n")
-
-        print("\n")
+        player_pet_choice.ignore()
     if choice == 5:
-        print("WHY THE FUCK WOULD YOU THROW ME?!?!")
-        hungry = True
-        bored = True
-        upset_big = True
-        violent = True
-
+        player_pet_choice.throw()
     if choice == 6:
-        print("That's nice that you're talking to me ... but you're really not that interesting...")
-        bored = True
+        player_pet_choice.talk()
 
-    hour +=1
-    # print(hour)
+def game_over_check(pet, pet_violent, pet_starved, game_running): #Add in checks for Starvation & Stuff
+    if pet_violent:
+        print(pet, "Is Violent", pet_violent)
+        print(pet, "Killed You.  You Lose")
+        return False
+    if pet_starved:
+        print(pet, "Has Starved")
+        print("You Have Killed", pet, "\nYou Lose")
+        return False
 
-    if hour > 12:
-        hour = hour - 12
-        print(hour)
-    if (hour -1 == 0) and AMPM =="AM":
-        AMPM = "PM"
-        print(hour, AMPM) #Maybe pull this out of the if statement b/c redundancy
-    elif (hour -1 == 0) and AMPM =="PM":
-        print(hour, AMPM)
+    return game_running, True
 
-    # else:
-    #     gameOver()
-    #     awake = False
-    clock.tick(60)
-    pygame.time.delay(1000)
 
-    if awake == True:
-        print("\n Next Turn \n \n")
+"""Create some sort of assigned_pet variable here, so that I can choose the right animal check ... """
+def game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat):
+    turn = 0
+    game_running = True
+    while game_running:
+
+        time = [hour, AMPM]
+        player_pet_choice.violent_check()
+        player_pet_choice.bored_check()
+        player_pet_choice.hungry_check()
+        player_pet_choice.upset_check()
+
+        turn += 1 
+
+        print("The Time is", time[0], time[1], "\n")
+        print(Fore.RED + "Turn", turn, "\n")
+
+        player_pet_choice.stats()
+
+        menu(player_pet_choice)
+        """I *should* be able to make this logic into a function... """
+        hour += 1
+
+
+        if hour >= 12:
+            if hour == 12:
+                if AMPM == "AM":
+                    AMPM = "PM"
+                elif AMPM == "PM":
+                    AMPM = "AM"
+
+            elif hour > 12:              
+                hour -= 12
+
+        clock.tick(60) 
+        pygame.time.delay(3000)
+        game_running = game_over_check(player_pet_choice.name, player_pet_choice.violent, player_pet_choice.starved, game_running)
+        
+        if game_running == False:
+            break
+
+
+if __name__ == "__main__":
+    intro(pet_name)
