@@ -194,7 +194,6 @@ def intro(pet_name):
     
     game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat)
 
-
 def menu(player_pet_choice): 
     print(Fore.RED + "Menu: \n\n",  
       Fore.GREEN + "1.  Feed \n",
@@ -219,7 +218,6 @@ def menu(player_pet_choice):
     if choice == 6:
         player_pet_choice.talk()
 
-
 def game_over_check(pet, pet_violent, pet_starved, game_running): #Add in checks for Starvation & Stuff
     if pet_violent:
         print(pet, "Is Violent", pet_violent)
@@ -231,7 +229,6 @@ def game_over_check(pet, pet_violent, pet_starved, game_running): #Add in checks
         return False
 
     return game_running, True
-
 
 def game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat):
     turn = 0
