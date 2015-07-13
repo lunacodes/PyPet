@@ -144,13 +144,11 @@ class Pet(object):
         self.bored_counter -= 1
         self.hungry_counter += 1
 
-
 Cat = Pet()
 Rat = Pet()
 Mouse = Pet()
 Bunny = Pet()
 Turtle = Pet()
-
 
 def intro(pet_name):
     print(Fore.RED + "Heya - Welcome to Pypet!!\n") 
