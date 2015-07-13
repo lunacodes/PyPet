@@ -44,12 +44,9 @@ class Pet(object):
             print("Sleepy\n")
         print("\n")
 
-
-
     def upset_check(self): 
         if self.upset_counter < 0:
             self.upset_counter = 0 
-        
         elif self.upset_counter > 0:
             if self.upset_counter == 1:
                 print(Fore.CYAN + "Meh")
@@ -147,7 +144,6 @@ class Pet(object):
         self.bored_counter -= 1
         self.hungry_counter += 1
 
-
 Cat = Pet()
 Rat = Pet()
 Mouse = Pet()
@@ -189,7 +185,6 @@ def intro(pet_name):
         pet_name = raw_input("\nWhat would you like to call your Turtle? \n" + Fore.GREEN)
         player_pet_choice = Turtle
         Turtle.name = pet_name
-
 
     print(Fore.CYAN + '\n\n' + pet_name + ' says "Hello"\n\n\n')
     print(Fore.RED + "Let's set the Time! \n")
