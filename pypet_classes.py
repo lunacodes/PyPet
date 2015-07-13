@@ -219,6 +219,7 @@ def menu(player_pet_choice):
     if choice == 6:
         player_pet_choice.talk()
 
+
 def game_over_check(pet, pet_violent, pet_starved, game_running): #Add in checks for Starvation & Stuff
     if pet_violent:
         print(pet, "Is Violent", pet_violent)
@@ -252,7 +253,6 @@ def game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat):
 
         menu(player_pet_choice)
         hour += 1
-
 
         if hour >= 12:
             if hour == 12:
