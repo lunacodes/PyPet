@@ -4,7 +4,9 @@
 
     Since this is terminal based, I plan to add in color, probably via the Colorama Module
     In the future, I'll write a Javascript version of this game, so people can play it on the web
-    """
+    
+    Non-working at present.  See "Design Notes.txt" and/or "Readme.md" for more info
+"""
 
 class Pet(object):
     """Factory Class to Produce Pets"""
