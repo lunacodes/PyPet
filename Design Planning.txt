@@ -1,0 +1,98 @@
+Design Notes for Refactoring for Next Version
+
+Things I need to learn:
+    Subclassing & Super
+
+Game Needs To:
+    1.  Save State
+            Use Database:
+                Check if Database is empty.
+                    if empty: Write Defaults to Database 
+                        Method 1: Maybe pull defaults from text file
+                        Method 2: Hardcode into program (probly better)
+            Initialize Pet by reading in from Database
+            Write To Database upon close() command
+
+
+    2.  Be based on Real Time:
+            Time Module
+                see time.py
+            Checks Last Time Played
+            Allows for long time lapses
+                Only kills pet if excessively long
+                Otherwise, leaves Pet in a very bad state
+            Checks Pet Age
+                Encourages Player by celebrating certain Time & Age Milestones
+                    Months, Birthday, etc
+                Pet Eventually Dies
+            Tracks Hours & AM/PM
+                Hours also calculate time since last action
+                    If you haven't action'd in certain time, game may give helpful hints
+
+    3.  Game Hints:
+            Game will give specific hints if player isn't doing well
+                "Maybe you should feed your cat"
+                "You haven't played in a while"
+                "Talking's probly not gonna help here"
+
+
+    4.  Action & Animal State Messages:
+            Per Animal - Least Redundancy Possible
+                Consider using a dictionary or list
+                    Generators or List Comprehensions
+
+    5.  Text Coloring:
+            Colorama - Other libraries are OS dependent or impractical
+                for ones requiring escape codes, I could just store globals
+            Color Needs to be able to be turned On & Off
+
+    6.  Player Action Functions:
+            Code in least redundant way
+                Either via Parent Class functions
+                    Or via animal functions if necessary
+                        The goal is to have functions be independent of Pet Type
+                            And then to have Messages be per Pet Type
+
+    7.  Intro Screen:
+            Welcomes player
+            Gets Animal Type, & Name
+            Pet_Name says Hello
+
+    8.  Menu for Player Actions:
+        Pet
+        Play
+        Ignore
+        Throw
+        Talk
+        Give Up (Player abandons Pet & Loses)
+        Quit (Game Saves State - you can come back later)
+
+    9.  Game Loop
+
+    10.  Game Over Function
+
+
+Possibly Beyond Scope:
+    Introduce Pet Friends, or an owner??
+
+List of Player Actions:
+    Feed
+    Pet
+    Play
+    Ignore
+    Throw
+    Talk
+
+Database should store:
+   hungry
+   starved
+   bored
+   upset
+   violent
+   sleepy
+   awake/asleep
+   weight
+   age
+   photo (ASCII)
+
+   Counters for each stat 
