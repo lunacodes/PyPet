@@ -30,7 +30,7 @@ In the meantime:
 &nbsp;&nbsp;&nbsp;&nbsp; **2. &nbsp;**  Implement Weight & Sleepy Functions<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **3. &nbsp;**  Weight: will be related to Boredom, Mood & Food<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **4. &nbsp;**  Sleepy: will improve some stats (Bored, Upset, Violent).  Will make others (Hungry) worse<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  The Sleepy mechanic will take into account that sleeping beyond Noon or Midnight will cause a Bug in the AMPM Switch Structure<br>
+&nbsp;&nbsp;**4a. &nbsp;**  The Sleepy mechanic will take into account that sleeping beyond Noon or Midnight will cause a Bug in the AMPM Switch Structure<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **5. &nbsp;**  Implement a 1-10 Scale (instead of 1-5) for all the Counters to give the player Extended Gameplay<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **6. &nbsp;**   Work on Implementing a System so that Every Animal Type does not need to be Instantiated at the beginning of the File.  Instead, only the Player's choice will be Instantiated.  This could possibly be done with Global Variables.<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **7. &nbsp;**  Include a Violence Warning from the System, when the Pet is highly inclined towards Violence.  This indicates the the player has not been treating their Pet Well.<br>
