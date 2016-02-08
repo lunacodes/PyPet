@@ -39,7 +39,7 @@ In the meantime:
 &nbsp;&nbsp; **8b. &nbsp;**  This could also be achieved by creating Subclasses for each Pet Type that inherit from the Pet Class
 
 
-###Bugs to Fix for Version 1.3:
+####Bugs to Fix for Version 1.3:
 &nbsp;&nbsp;&nbsp;&nbsp; **1. &nbsp;**  bored_check() outputs comments that are too similar/all the same<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **2. &nbsp;**  Violence is not initiated soon enough.  Based on the violence_counter, it should come into play after the 3rd Throw action, but it is not coming into play until the 4th.<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **3. &nbsp;**  Check if Pygame's clock.tick() function is actually needed<br>
