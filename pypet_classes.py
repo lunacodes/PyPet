@@ -11,16 +11,7 @@
 class Pet(object):
     """Factory Class to Produce Pets"""
     
-    def __init__(self, name):
-        # super(Pet, self).__init__()
-        pass
-
-
-class Cat(Pet):
-    """ Everybody wants to be a Cat """
-    
-    def __init__(self):
-        super(Cat, self).__init__()
+    def __init__(self, name, key):
         self.name = name
         self.hungry = True
         self.starved = False
@@ -28,7 +19,42 @@ class Cat(Pet):
         self.upset = False
         self.violent = False
         self.sleepy = False
+
+        self.key = key        
+        self.messages = {
+            'hungry': "I'm Hungry!!",
+            'bored': "*Your pet says in a voice, strangely remiminiscent of Willow* Bored Now",
+            'upset'  : "UGH - what the hell?!",
+            'awake'  : "Alright, alright - I'm awake already",
+            'asleep' : "Your pet is in a deep sleep",
+            'sleepy' : "Your pet looks like it could really use a rest..."
+        }
+
+
+        def message_output(self, key):
+            self.key = key
+            print(self.messages[self.key])
+
+class Cat(Pet):
+    """ Everybody wants to be a Cat """
+    
+    def __init__(self, name, key):
+        # super(Pet, self).__init__()
+        self.name = name
+        self.key = key
+        
         pass
+
+
+class Rat(Pet):
+    """ Rats are so much nicer than Mice """
+    
+    def __init__(self):
+        super(Rat, self).__init__()
+        self.arg = arg
+        
+        pass
+
 
 class Mouse(Pet):
     """ How Very Mousy """
@@ -36,6 +62,7 @@ class Mouse(Pet):
     def __init__(self):
         super(Mouse, self).__init__()
         self.arg = arg
+        
         pass
                         
 
@@ -45,6 +72,7 @@ class Bunny(Pet):
     def __init__(self):
         super(Bunny, self).__init__()
         self.arg = arg
+        
         pass
 
 
@@ -54,6 +82,7 @@ class Turtle(Pet):
     def __init__(self):
         super(Turtle, self).__init__()
         self.arg = arg
+        
         pass
         
         
@@ -68,5 +97,9 @@ def menu(pet_choice):
 def game_loop():
     print("Welcome to PyPet")
 
+    cat_pet = Cat('harry', 'hungry')
+    Cat.message_output('hungry')
 
+if __name__ == '__main__':
+    game_loop()
 
