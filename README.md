@@ -18,14 +18,14 @@ In the meantime:
 
 ##Version 1.2
 
-###What's New:
+####What's New:
 
  * Choose up to 5 Different Animals
  * Changed Version Numbering Scheme
  * Colored Terminal Output so Game is easier to Read
   
 
-###Features to Implement for Version 1.3 (Deprecated): 
+####Features to Implement for Version 1.3 (Deprecated): 
 &nbsp;&nbsp;&nbsp;&nbsp; **1. &nbsp;**  Provide a Menu Option to choose between Polite Pets & Vulgar/Intense Pets<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **2. &nbsp;**  Implement Weight & Sleepy Functions<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **3. &nbsp;**  Weight: will be related to Boredom, Mood & Food<br>
