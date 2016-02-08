@@ -40,10 +40,10 @@ In the meantime:
 
 
 ###Bugs to Fix for Version 1.3:
-* `1.  bored_check() outputs comments that are too similar/all the same`
-* `2.  Violence is not initiated soon enough.  Based on the violence_counter, it should come into play after the 3rd Throw action, but it is not coming into play until the 4th.`
-* `3.  Check if Pygame's clock.tick() function is actually needed`
-* `3a. Move "Time/AMPM adjustment" into a Function if possible`
+&nbsp;&nbsp;&nbsp;&nbsp; **1. &nbsp;**  bored_check() outputs comments that are too similar/all the same<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **2. &nbsp;**  Violence is not initiated soon enough.  Based on the violence_counter, it should come into play after the 3rd Throw action, but it is not coming into play until the 4th.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **3. &nbsp;**  Check if Pygame's clock.tick() function is actually needed<br>
+&nbsp;&nbsp; **3a. &nbsp;**  Move "Time/AMPM adjustment" into a Function if possible
 
 
 ##Version 1.0:
