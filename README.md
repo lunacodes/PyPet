@@ -35,7 +35,7 @@ In the meantime:
 &nbsp;&nbsp;&nbsp;&nbsp; **6. &nbsp;**   Work on Implementing a System so that Every Animal Type does not need to be Instantiated at the beginning of the File.  Instead, only the Player's choice will be Instantiated.  This could possibly be done with Global Variables.<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **7. &nbsp;**  Include a Violence Warning from the System, when the Pet is highly inclined towards Violence.  This indicates the the player has not been treating their Pet Well.<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **8. &nbsp;**  Develop Differentiated Output Messages from the Hungry/Bored/Upset/Violent Checks, based on the Animal the player chose:<br>
-&nbsp;&nbsp;&nbsp;&nbsp; **8a. &nbsp;**  This could be achieved by defining each check for each animal separately within the class (and then using player_pet_choice) to call the appropriate function<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **8a.**  This could be achieved by defining each check for each animal separately within the class (and then using player_pet_choice) to call the appropriate function<br>
 &nbsp;&nbsp;&nbsp;&nbsp; **8b. &nbsp;**  This could also be achieved by creating Subclasses for each Pet Type that inherit from the Pet Class
 
 
