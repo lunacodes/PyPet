@@ -7,7 +7,7 @@
 *(I hope to have a new working version up soon!)*
 
 <br>
-##Version 2.0:
+##Version 2.0
 PyPet is going through a major Refactoring - *See [Design Planning](https://github.com/lunacodes/PyPet/blob/master/Design%20Planning.txt) for more info*
 
 In the meantime:    
@@ -16,27 +16,27 @@ In the meantime:
 * *Check Out `pypet_classes_v1-2.py` if you are interested in the previous state of the game.*
 
 
-##Version 1.2:
+##Version 1.2
 
-What's New:
+###What's New:
 
- * `Choose up to 5 Different Animals`
- * `Changed Version Numbering Scheme`
- * `Colored Terminal Output so Game is easier to Read`
+ * Choose up to 5 Different Animals
+ * Changed Version Numbering Scheme
+ * Colored Terminal Output so Game is easier to Read
   
 
 ###Features to Implement for Version 1.3 (Deprecated): 
-* `1.  Provide a Menu Option to choose between Polite Pets & Vulgar/Intense Pets`
-* `2.  Implement Weight & Sleepy Functions`
-* `3.  Weight: will be related to Boredom, Mood & Food`
-* `4.  Sleepy: will improve some stats (Bored, Upset, Violent).  Will make others (Hungry) worse`
-* `4a. The Sleepy mechanic will take into account that sleeping beyond Noon or Midnight will cause a Bug in the AMPM Switch Structure`
-* `5.  Implement a 1-10 Scale (instead of 1-5) for all the Counters to give the player Extended Gameplay`
-* `6.   Work on Implementing a System so that Every Animal Type does not need to be Instantiated at the beginning of the File.  Instead, only the Player's choice will be Instantiated.  This could possibly be done with Global Variables.`
-* `7.  Include a Violence Warning from the System, when the Pet is highly inclined towards Violence.  This indicates the the player has not been treating their Pet Well.`
-* `9.  Develop Differentiated Output Messages from the Hungry/Bored/Upset/Violent Checks, based on the Animal the player chose:`
-* `9a.  This could be achieved by defining each check for each animal separately within the class (and then using player_pet_choice) to call the appropriate function`
-* `9b.  This could also be achieved by creating Subclasses for each Pet Type that inherit from the Pet Class`
+&nbsp;&nbsp;&nbsp;&nbsp; **1. &nbsp;**  Provide a Menu Option to choose between Polite Pets & Vulgar/Intense Pets<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **2. &nbsp;**  Implement Weight & Sleepy Functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **3. &nbsp;**  Weight: will be related to Boredom, Mood & Food<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **4. &nbsp;**  Sleepy: will improve some stats (Bored, Upset, Violent).  Will make others (Hungry) worse<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **4a. &nbsp;**  The Sleepy mechanic will take into account that sleeping beyond Noon or Midnight will cause a Bug in the AMPM Switch Structure<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **5. &nbsp;**  Implement a 1-10 Scale (instead of 1-5) for all the Counters to give the player Extended Gameplay<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **6. &nbsp;**   Work on Implementing a System so that Every Animal Type does not need to be Instantiated at the beginning of the File.  Instead, only the Player's choice will be Instantiated.  This could possibly be done with Global Variables.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **7. &nbsp;**  Include a Violence Warning from the System, when the Pet is highly inclined towards Violence.  This indicates the the player has not been treating their Pet Well.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **8. &nbsp;**  Develop Differentiated Output Messages from the Hungry/Bored/Upset/Violent Checks, based on the Animal the player chose:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **8a. &nbsp;**  This could be achieved by defining each check for each animal separately within the class (and then using player_pet_choice) to call the appropriate function<br>
+&nbsp;&nbsp;&nbsp;&nbsp; **8b. &nbsp;**  This could also be achieved by creating Subclasses for each Pet Type that inherit from the Pet Class
 
 
 ###Bugs to Fix for Version 1.3:
