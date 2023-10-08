@@ -1,16 +1,16 @@
 from __future__ import print_function
-# import pygame
-# from pygame.locals import *
+import pygame
+from pygame.locals import *
 from colorama import init, Fore, Back, Style
 
 init() #Colorama init
-# pygame.init()
-# clock = pygame.time.Clock()
+pygame.init()
+clock = pygame.time.Clock()
 
 pet_type = 0
 pet_name = ""
 
-class Pet(object): 
+class Pet(object):
     def __init__(self):
         self.name = pet_name    #Note - this is Poor Binding
         self.hungry = True
@@ -22,7 +22,7 @@ class Pet(object):
         self.upset_counter = 0
         self.violent = False
         self.violent_counter = 0
-        self.sleepy = False 
+        self.sleepy = False
         self.awake = True
         self.weight = 5.0
         self.age = 5
@@ -33,7 +33,7 @@ class Pet(object):
         #     6: "Now you're gonna die"
         # }
 
-    def stats(self): 
+    def stats(self):
         print(Fore.CYAN + self.name + "\n", self.photo + "\n", "Weght: ", self.weight, "\n")
         if self.hungry == True:
             print("Hungry\n")
@@ -56,9 +56,9 @@ class Pet(object):
     #             return msgs[k]
     #         return max(msgs.key(), key = int)
 
-    def upset_check(self): 
+    def upset_check(self):
         if self.upset_counter < 0:
-            self.upset_counter = 0 
+            self.upset_counter = 0
         elif self.upset_counter > 0:
             if self.upset_counter == 1:
                 print(Fore.CYAN + "Meh")
@@ -70,9 +70,9 @@ class Pet(object):
                 print(Fore.CYAN + "FIX THIS NOW GODS DAMNIT - YOU FUCKING TERRIBLE OWNER!!")
             elif self.upset_counter >= 6:
                 print(Fore.CYAN + "Now you're gonna die")
-                self.violent = True 
+                self.violent = True
 
-    def bored_check(self): 
+    def bored_check(self):
         if self.bored_counter <= 0:
             self.bored_counter = 0
         elif self.bored_counter >= 0:
@@ -83,8 +83,8 @@ class Pet(object):
             elif self.bored_counter >= 4:
                 self.upset_counter += 1
                 print(Fore.CYAN + "Bored Count >= 4")
-    
-    def violent_check(self): 
+
+    def violent_check(self):
         if self.violent_counter <= 0:
             self.violent_counter = 0
         elif self.violent_counter > 0:
@@ -109,8 +109,8 @@ class Pet(object):
             elif self.hungry_counter < 6:
                 self.upset_counter += 1
                 print(Fore.CYAN + "FEED ME NOW")
-            elif self.hungry_check >= 6:
-                self.starved = True
+            # elif self.hungry_check >= 6:
+            #     self.starved = True
 
     def feed(self):
         if self.hungry == True:
@@ -123,9 +123,9 @@ class Pet(object):
     def pet(self):
         print(Fore.CYAN + "\n^_^ Thank you for petting me ^_^")
         self.upset_counter -= 1
-        
+
         self.upset_check()
-        
+
     def play(self):
 
         print(Fore.CYAN + "\n^_^ Yay!!  Let's Play ^_^ ")
@@ -138,10 +138,10 @@ class Pet(object):
 
     def ignore(self):
         print(Fore.CYAN + "\nWow - Fuck You. Pay attention to me")
-        
+
         if self.upset_counter == 2:
             self.upset_counter += 1
-        elif self.upset_counter >= 3: 
+        elif self.upset_counter >= 3:
             self.upset_counter += 1.5
         self.bored_counter += 1
         self.hungry_counter += 1
@@ -163,7 +163,7 @@ Bunny = Pet()
 Turtle = Pet()
 
 def intro(pet_name):
-    print(Fore.RED + "Heya - Welcome to Pypet!!\n") 
+    print(Fore.RED + "Heya - Welcome to Pypet!!\n")
     print(Fore.GREEN + ' (=^o.o^=)' + "\n",
           '(=^o.o^=)' + "\n",
           '(=^o.o^=)' + "\n",
@@ -172,11 +172,11 @@ def intro(pet_name):
           '(=^o.o^=)' + "\n",
           '(=^o.o^=)' + "\n",
           )
-    
-    print(Fore.RED) 
+
+    print(Fore.RED)
     print("What type of pet would you like to play?" + Fore.GREEN + " \n\n1.  Cat\n2.  Rat\n3.  Mouse\n4.  Bunny\n5.  Turtle\n")
-    pet_type = input("") 
-    print(str(pet_type)) 
+    pet_type = input("")
+    print(str(pet_type))
     print(Fore.RED)
     pet_name = raw_input("\nWhat would you like to call your Cat? \n\n" + Fore.GREEN)
     player_pet_choice = Cat
@@ -200,14 +200,14 @@ def intro(pet_name):
 
     print(Fore.CYAN + '\n\n' + pet_name + ' says "Hello"\n\n\n')
     print(Fore.RED + "Let's set the Time! \n")
-    hour = input("What's the Hour? (1-12) \n" + Fore.GREEN) 
+    hour = input("What's the Hour? (1-12) \n" + Fore.GREEN)
     AMPM = raw_input(Fore.RED + "\nIs it AM or PM? \n" + Fore.GREEN).upper() #This should cause a bug later on, if the user inputs more than two characters... easy enough to fix, just get the slice of it
     print("\n")
-    
+
     game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat)
 
-def menu(player_pet_choice): 
-    print(Fore.RED + "Menu: \n\n",  
+def menu(player_pet_choice):
+    print(Fore.RED + "Menu: \n\n",
       Fore.GREEN + "1.  Feed \n",
       "2.  Pet \n",
       "3.  Play \n",
@@ -216,7 +216,7 @@ def menu(player_pet_choice):
       "6.  Talk \n \n")
 
     choice = input(Fore.RED + "What would you like to do? (Enter 1-5) \n" + Fore.GREEN)
-    
+
     if choice == 1:
         player_pet_choice.feed()
     if choice == 2:
@@ -253,7 +253,7 @@ def game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat):
         player_pet_choice.hungry_check()
         player_pet_choice.upset_check()
 
-        turn += 1 
+        turn += 1
 
         print("The Time is", time[0], time[1], "\n")
         print(Fore.RED + "Turn", turn, "\n")
@@ -270,14 +270,14 @@ def game_loop(player_pet_choice, pet_type, pet_name, hour, AMPM, Cat):
                 elif AMPM == "PM":
                     AMPM = "AM"
 
-            elif hour > 12:              
+            elif hour > 12:
                 hour -= 12
 
-        clock.tick(60) 
+        clock.tick(60)
         pygame.time.delay(3000)
         game_running = game_over_check(player_pet_choice.name, player_pet_choice.violent, player_pet_choice.starved, game_running)
 
-        
+
         if game_running == False:
             break
 
