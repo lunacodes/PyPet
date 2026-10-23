@@ -1,0 +1,12 @@
+black
+coverage
+django
+django-cors-headers
+django-environ
+djangorestframework
+pre-commit
+pylint-django
+pytest
+pytest-cov
+pytest-django
+ruff
