@@ -16,18 +16,19 @@ class Pet(models.Model):
 
     name = models.CharField(max_length=150)
     species = models.CharField(max_length=150)
-    hunger_level = models.FloatField()
-    bored_level = models.FloatField()
-    upset_level = models.FloatField()
-    violent_level = models.FloatField()
-    sleepy_level = models.FloatField()
-    age = models.IntegerField()
-    weight = models.IntegerField()
+    hunger_level = models.FloatField(default=0)
+    bored_level = models.FloatField(default=0)
+    upset_level = models.FloatField(default=0)
+    violent_level = models.FloatField(default=0)
+    sleepy_level = models.FloatField(default=0)
+    age = models.IntegerField(default=1)
+    weight = models.IntegerField(default=2)
     photo = models.ImageField(
-        # upload_to=None,
+        upload_to="backend/uploads",
         # height_field=None,
         # width_field=None,
         max_length=100,
+        null=True,
     )
 
     def check_upset(self) -> str:
