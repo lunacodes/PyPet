@@ -24,7 +24,10 @@ class Pet(models.Model):
     age = models.IntegerField()
     weight = models.IntegerField()
     photo = models.ImageField(
-        upload_to=None, height_field=None, width_field=None, max_length=100
+        # upload_to=None,
+        # height_field=None,
+        # width_field=None,
+        max_length=100,
     )
 
     def check_upset(self) -> str:

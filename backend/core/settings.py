@@ -34,7 +34,7 @@ SECRET_KEY: str = env("SECRET_KEY")
 # False if not in os.environ because of casting above
 DEBUG: str = env("DEBUG")
 
-HOSTS: str = env("ALLOWED_HOSTS")
+HOSTS = env("ALLOWED_HOSTS")
 ALLOWED_HOSTS: list[str] = HOSTS.split(",")
 
 CORS_ALLOWED: str = env("CORS_ORIGIN_WHITELIST")
@@ -52,7 +52,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
-    "todo",
+    "pets",
 ]
 
 MIDDLEWARE: list[str] = [
@@ -66,7 +66,7 @@ MIDDLEWARE: list[str] = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-ROOT_URLCONF = "backend.urls"
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES: list[dict[str, Any]] = [
     {
@@ -83,7 +83,7 @@ TEMPLATES: list[dict[str, Any]] = [
     },
 ]
 
-WSGI_APPLICATION = "backend.wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
 
 
 # Database
@@ -137,8 +137,13 @@ STATIC_URL = "static/"
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.console.EmailBackend",
-    },
+# MAILERS = {
+#     "default": {
+#         "BACKEND": "django.core.mail.backends.console.EmailBackend",
+#     },
+# }
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }
