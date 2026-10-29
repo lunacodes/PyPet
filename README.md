@@ -4,3 +4,6 @@ PyPet is a work-in-progress redesign of a game I started writing 11(?) years ago
 
 I'm currently coding the Django backend, and will use React for the front-end.
 
+## Assets & Licensing
+
+[Bunny spritesheet](https://hredbird.itch.io/bunny-sprite-sheet) is "Creative Commons BY"
