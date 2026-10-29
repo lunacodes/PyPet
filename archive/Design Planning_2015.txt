@@ -7,7 +7,7 @@ Game Needs To:
     1.  Save State
             Use Database:
                 Check if Database is empty.
-                    if empty: Write Defaults to Database 
+                    if empty: Write Defaults to Database
                         Method 1: Maybe pull defaults from text file
                         Method 2: Hardcode into program (probly better)
             Initialize Pet by reading in from Database
@@ -95,4 +95,4 @@ Database should store:
    age
    photo (ASCII)
 
-   Counters for each stat 
+   Counters for each stat
