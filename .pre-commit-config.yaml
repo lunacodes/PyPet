@@ -1,3 +1,4 @@
+exclude: "archive/"
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
@@ -18,3 +19,7 @@ repos:
         args: [--fix]
       # Run the formatter.
       - id: ruff-format
+  - repo: https://github.com/pre-commit/mirrors-scss-lint
+    rev: "" # Use the sha / tag you want to point at
+    hooks:
+      - id: scss-lint
