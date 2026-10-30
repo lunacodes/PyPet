@@ -1,0 +1,57 @@
+.gameBoard {
+  background: black;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 20% 60% 20%;
+  grid-template-areas:
+    "hleft hcenter hright"
+    "left main right"
+    "fleft fcenter fright";
+  min-height: 60svh;
+}
+
+.moodIcons {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  grid-area: hleft;
+  justify-content: center;
+
+  .single {
+    align-content: center;
+    background: darkgrey;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    height: 50%;
+    justify-content: center;
+    width: 50%;
+  }
+}
+
+.petIcon {
+  /* width: 30%; */
+  align-content: center;
+  border: 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  grid-column-end: right;
+  grid-column-start: left;
+  grid-row-end: right;
+  grid-row-start: left;
+  justify-content: center;
+}
+
+.actionRow {
+  align-content: center;
+  display: flex;
+  grid-column-start: fleft;
+  grid-column-end: fright;
+  justify-content: space-around;
+}
+
+.actionItem {
+  height: 50%;
+  width: 20%;
+}

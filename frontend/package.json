@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "private": true,
+  "proxy": "http://localhost:8000",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -10,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.21.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
@@ -19,6 +21,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.89.0",
+    "sass": "^1.107.0",
     "typescript": "~7.0.2",
     "vite": "^8.3.5"
   }
